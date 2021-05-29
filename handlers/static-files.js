@@ -13,8 +13,10 @@ function getContentType(url) {
     } else if (url.endsWith('js')) {
         return 'text/js';
     } else if (url.endsWith('jpg')) {
-    return 'text/jpg';
-}
+        return 'text/jpg';
+    } else if (url.endsWith('ico')) {
+        return 'text/ico';
+    }
 }
 
 module.exports = (req, res) => {
@@ -27,7 +29,7 @@ module.exports = (req, res) => {
                 console.log(err);
 
                 res.writeHead(404, {
-                    'Content-Type' : 'text/plain'
+                    'Content-Type': 'text/plain'
                 });
 
                 res.write('Error not Found');
@@ -38,7 +40,7 @@ module.exports = (req, res) => {
             console.log(pathname);
 
             res.writeHead(200, {
-                'Content-Type' : getContentType(pathname)
+                'Content-Type': getContentType(pathname)
             });
 
             res.write(data);
